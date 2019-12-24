@@ -12,7 +12,7 @@ package jacob.clark.Model;
  */
 public abstract class Part {
     protected int id;
-    protected string name;
+    protected String name;
     protected double price;
     protected int stock;
     protected int min;

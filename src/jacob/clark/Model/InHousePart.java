@@ -10,6 +10,9 @@ package jacob.clark.Model;
  *
  * @author Jacobi
  */
-public class InHousePart {
+public class InHouse extends Part {
+    private final int machineID;
+    
+    public InHousePart
     
 }

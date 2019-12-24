@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author Jacobi
  */
-public class AddInhousePartController implements Initializable {
+public class ModifyPartController implements Initializable {
 
     /**
      * Initializes the controller class.

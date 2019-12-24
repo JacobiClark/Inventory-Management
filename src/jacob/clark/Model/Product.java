@@ -1,5 +1,7 @@
 package jacob.clark.Model;
 
+import javafx.collections.ObservableList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,7 +13,7 @@ package jacob.clark.Model;
  * @author Jacobi
  */
 public class Product {
-    private ObservableList<Part>;
+    //fprivate ObservableList <Part>;
     private int id;
     private String name;
     private double price;
