@@ -11,24 +11,14 @@ package jacob.clark.Model;
  * @author Jacobi
  */
 public abstract class Part {
-    protected int id;
-    protected String name;
-    protected double price;
-    protected int stock;
-    protected int min;
-    protected int max;
+    int id;
+    String name;
+    double price;
+    int stock;
+    int min;
+    int max;
     
-    public Part(int id, String name, double price, int stock, int min, int max)
-    {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.stock = stock;
-        this.min = min;
-        this.max = max;
-    }
-    
-     public void setId(int id){
+    public void setId(int id){
         this.id = id;
     }
     
@@ -77,3 +67,5 @@ public abstract class Part {
     } 
 
 }
+
+

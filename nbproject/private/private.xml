@@ -4,15 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/jacob/clark/Model/Product.java</file>
-            <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/Controller/AddProductController.java</file>
-            <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/MainApp/JacobClark.java</file>
-            <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/Controller/AddPartController.java</file>
-            <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/Controller/ModifyPartController.java</file>
+            <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/jacob/clark/Model/InHouse.java</file>
             <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/jacob/clark/Model/Inventory.java</file>
-            <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/Controller/MainScreenController.java</file>
-            <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/jacob/clark/Model/OutsourcedPart.java</file>
             <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/jacob/clark/Model/Part.java</file>
-            <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/jacob/clark/Model/InHousePart.java</file>
+            <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/jacob/clark/Model/OutsourcedPart.java</file>
         </group>
     </open-files>
 </project-private>
