@@ -8,14 +8,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="420.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jacob.clark.View_Controller.MainScreenController">
+<AnchorPane id="AnchorPane" prefHeight="420.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="jacob.clark.View_Controller.MainController">
    <children>
       <TableView fx:id="partsTable" layoutX="40.0" layoutY="120.0" prefHeight="200.0" prefWidth="400.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Part ID" />
-          <TableColumn prefWidth="75.0" text="Part Name" />
-            <TableColumn prefWidth="125.0" text="Inventory Level" />
-            <TableColumn prefWidth="129.0" text="Price/Cost per Unit" />
+          <TableColumn fx:id="PartID" prefWidth="75.0" text="Part ID" />
+          <TableColumn fx:id="PartName" prefWidth="75.0" text="Part Name" />
+            <TableColumn fx:id="PartStock" prefWidth="125.0" text="Inventory Level" />
+            <TableColumn fx:id="PartCost" prefWidth="129.0" text="Price/Cost per Unit" />
         </columns>
       </TableView>
       <TextField fx:id="partsSearch" layoutX="280.0" layoutY="80.0" maxWidth="160.0" prefHeight="30.0" prefWidth="160.0">
@@ -23,7 +23,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button id="partsSearchButton" layoutX="200.0" layoutY="80.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" prefWidth="70.0" text="search">
+      <Button id="partsSearchButton" fx:id="partsSearchButton" layoutX="200.0" layoutY="80.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" prefWidth="70.0" text="search">
          <font>
             <Font size="14.0" />
          </font>
@@ -50,10 +50,10 @@
       </Button>
       <TableView fx:id="productsTable" layoutX="500.0" layoutY="120.0" prefHeight="200.0" prefWidth="400.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="Product ID" />
-            <TableColumn prefWidth="75.0" text="Product Name" />
-            <TableColumn prefWidth="125.0" text="Inventory Level" />
-            <TableColumn prefWidth="129.0" text="Price/Cost per Unit" />
+            <TableColumn fx:id="ProductID" prefWidth="75.0" text="Product ID" />
+            <TableColumn fx:id="ProductName" prefWidth="91.0" text="Product Name" />
+            <TableColumn fx:id="ProductStock" prefWidth="109.0" text="Inventory Level" />
+            <TableColumn fx:id="ProductCost" prefWidth="129.0" text="Price/Cost per Unit" />
          </columns>
       </TableView>
       <TextField fx:id="productsSearch" layoutX="740.0" layoutY="80.0" maxWidth="160.0" prefHeight="30.0" prefWidth="160.0">
@@ -61,7 +61,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button id="productsSearchButton" layoutX="660.0" layoutY="80.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" prefWidth="70.0" text="search">
+      <Button id="productsSearchButton" fx:id="ProductsSearchButton" layoutX="660.0" layoutY="80.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" prefWidth="70.0" text="search">
          <font>
             <Font size="14.0" />
          </font>
@@ -86,7 +86,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button id="addProductsButton" fx:id="productsDelete" layoutX="650.0" layoutY="340.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" prefWidth="70.0" text="Delete">
+      <Button id="addProductsButton" fx:id="productsAdd" layoutX="650.0" layoutY="340.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" prefWidth="70.0" text="Delete">
          <font>
             <Font size="14.0" />
          </font>

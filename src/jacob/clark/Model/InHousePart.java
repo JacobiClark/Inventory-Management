@@ -10,9 +10,9 @@ package jacob.clark.Model;
  *
  * @author Jacobi
  */
-public class InHouse extends Part {
+public class InHousePart extends Part {
     
-    public InHouse(int id, String name, double price, int stock, int min, int max) {
+    public InHousePart(int id, String name, double price, int stock, int min, int max) {
         this.id = id;
         this.name = name;
         this.price = price;

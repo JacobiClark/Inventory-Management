@@ -17,55 +17,54 @@ public abstract class Part {
     int stock;
     int min;
     int max;
-    
-    public void setId(int id){
-        this.id = id;
-    }
-    
-    public void setName(String name){
-        this.name = name;
-    }
-    
-    public void setPrice(double price){
-        this.price = price;
-    }
-    
-    public void setStock(int stock){
-        this.stock = stock;
-    }
-    
-    public void setMin(int min){
-        this.min = min;
-    }
-    
-    public void setMax(int max){
-        this.max = max;
-    }
-    
-    public int getId(){
+
+    public int getId() {
         return id;
     }
-    
-    public String getName(){
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
         return name;
     }
-    
-    public double getPrice(){
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getPrice() {
         return price;
     }
-    
-    public int getStock(){
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getStock() {
         return stock;
     }
-    
-    public int getMin(){
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public int getMin() {
         return min;
     }
-    
-    public int getMax(){
-        return max;
-    } 
 
+    public void setMin(int min) {
+        this.min = min;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    public void setMax(int max) {
+        this.max = max;
+    }
 }
 
 
