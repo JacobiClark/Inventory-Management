@@ -31,7 +31,6 @@ import javafx.stage.Stage;
  * @author Jacobi
  */
 public class AddPartController implements Initializable {
-    
     @FXML
     private RadioButton PartInHouseRB;
     
@@ -53,7 +52,7 @@ public class AddPartController implements Initializable {
     }
     
     @FXML
-    private Button addPartCancelButon;
+    private Button addPartCancelButton;
 
     
     @FXML
@@ -61,7 +60,7 @@ public class AddPartController implements Initializable {
     
     public static int PartCounter = 1;
     
-    public void partSaveButtonPushed (ActionEvent event) throws IOException {
+    public void addPartSaveButtonPushed (ActionEvent event) throws IOException {
         
         Inventory inventory = new Inventory();
         if (this.PartInHouseRB.isSelected()) {
@@ -72,16 +71,12 @@ public class AddPartController implements Initializable {
             OutsourcedPart newPart = new OutsourcedPart(PartCounter++,PartName.getText(), Double.parseDouble(PartCost.getText()), Integer.parseInt(PartStock.getText()),Integer.parseInt(PartMin.getText()), Integer.parseInt(PartMax.getText()));
             inventory.addPart(newPart);
         }
-        Parent AddPartScreen = FXMLLoader.load(getClass().getResource("Main.fxml"));
-        Scene AddPartScene = new Scene(AddPartScreen);
-        Stage AddPartStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        AddPartStage.setScene(AddPartScene);
-        AddPartStage.show();
+        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
 
     }
     
-    public void partAddCancelButtonPushed (ActionEvent event) {
-        
+    public void addPartCancelButtonPushed (ActionEvent event) {
+        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
     }
 
 

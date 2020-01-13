@@ -14,7 +14,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button id="cancelButton]" fx:id="addPartCancelButon" layoutX="370.0" layoutY="360.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" prefWidth="70.0" text="Cancel">
+      <Button id="cancelButton" fx:id="addPartCancelButton" layoutX="370.0" layoutY="360.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" onAction="#addPartCancelButtonPushed" prefWidth="70.0" text="Cancel">
          <font>
             <Font size="14.0" />
          </font>
@@ -24,7 +24,7 @@
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <Button id="saveButton" fx:id="partSaveButtonPushed" layoutX="280.0" layoutY="360.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" onAction="#partSaveButtonPushed" prefWidth="70.0" text="Save">
+      <Button id="saveButton" fx:id="addPartSaveButton" layoutX="280.0" layoutY="360.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" onAction="#addPartSaveButtonPushed" prefWidth="70.0" text="Save">
          <font>
             <Font size="14.0" />
          </font>

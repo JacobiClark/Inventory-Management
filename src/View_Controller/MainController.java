@@ -12,6 +12,8 @@ import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -54,7 +56,7 @@ public class MainController implements Initializable {
     @FXML
     private TableColumn<Product, Integer> ProductStockColumn;
     @FXML
-    private TableColumn<Product, Integer> ProductCostColumn;
+    private TableColumn<Product, Double> ProductCostColumn;
     
     //Search buttons/boxes
     @FXML    
@@ -65,35 +67,58 @@ public class MainController implements Initializable {
     private TextField productsSearch;
     @FXML    
     private Button partAdd;
-    
     @FXML
     public void partAddButtonPushed(ActionEvent event) throws IOException {
-        Parent AddPartScreen = FXMLLoader.load(getClass().getResource("AddPart.fxml"));
-        Scene AddPartScene = new Scene(AddPartScreen);
-        Stage AddPartStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        AddPartStage.setScene(AddPartScene);
-        AddPartStage.show();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddPart.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Add New Part");
+        stage.setScene(new Scene(root));  
+        stage.show();
+    }
+    
+    @FXML
+    private Button partModify;
+    @FXML
+    public void partModifyButtonPushed(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ModifyPart.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Modify Part");
+        stage.setScene(new Scene(root));  
+        stage.show();
+    }
+    @FXML
+    private Button partDelete;
+
+
+    @FXML
+    private Button productAdd;
+    @FXML
+    public void productAddButtonPushed(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddProduct.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Add New Product");
+        stage.setScene(new Scene(root));  
+        stage.show();
+    }
+    
+    @FXML
+    private Button productModify;
+    @FXML
+    public void productModifyButtonPushed(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ModifyProduct.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Add New Product");
+        stage.setScene(new Scene(root));  
+        stage.show();
     }
     
     @FXML
     private Button ProductsSearchButton;
-    @FXML
-    private Button partDelete;
-    @FXML
-    private Button partModify;
-    @FXML
-    private Button productAdd;
     
-    @FXML
-    public void productAddButtonPushed(ActionEvent event) throws IOException {
-        Parent AddProductScreen = FXMLLoader.load(getClass().getResource("AddProduct.fxml"));
-        Scene AddProductScene = new Scene(AddProductScreen);
-        Stage AddProductStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        AddProductStage.setScene(AddProductScene);
-        AddProductStage.show();
-    }
-    @FXML
-    private Button productModify;
     @FXML
     private Button productDelete;
     @FXML
@@ -104,26 +129,36 @@ public class MainController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-/*@FXML
-    private TableView<Part> partsTable;
-    @FXML
-    private TableColumn<Part, Integer> PartID;
-    @FXML
-    private TableColumn<Part, String> PartName;
-    @FXML
-    private TableColumn<Part, Integer> PartStock;
-    @FXML
-    private TableColumn<Part, Integer> PartCost;
-    PartID*/
-    //Set up table columns
-    PartIDColumn.setCellValueFactory(new PropertyValueFactory<Part, Integer>("PartID"));
-    PartNameColumn.setCellValueFactory(new PropertyValueFactory<Part, String>("PartName"));
-    PartStockColumn.setCellValueFactory(new PropertyValueFactory<Part, Integer>("PartStock"));
-    PartCostColumn.setCellValueFactory(new PropertyValueFactory<Part, Double>("PartCost"));
+
+    //Initialize part table columns
+    PartIDColumn.setCellValueFactory(new PropertyValueFactory<Part, Integer>("id"));
+    PartNameColumn.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
+    PartStockColumn.setCellValueFactory(new PropertyValueFactory<Part, Integer>("stock"));
+    PartCostColumn.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
     //Load in Parts
     partsTable.setItems(Inventory.allParts);
     
-    }
+    //Filter the Parts
+    FilteredList<Part> filteredData = new FilteredList<>(Inventory.allParts, p -> true);
 
-    
+    partsSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(Part -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (Part.getName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                }
+                return false; // Does not match.
+            });
+        });
+    SortedList<Part> sortedData = new SortedList<>(filteredData);
+    sortedData.comparatorProperty().bind(partsTable.comparatorProperty());
+    partsTable.setItems(sortedData);
+    }
 }
