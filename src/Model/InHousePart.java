@@ -12,22 +12,19 @@ package Model;
  */
 public class InHousePart extends Part {
     
-    public InHousePart(int id, String name, double price, int stock, int min, int max) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.stock = stock;
-        this.min = min;
-        this.max = max;
+    private int machineID;
+    
+    public InHousePart() {
+        this.machineID = machineID;
     }
     
-    private int machineID;
+    
     
     public void setMachineID(int machineID) {
         this.machineID = machineID;
     }
     
     public int getMachineID() {
-        return machineID;
+        return this.machineID;
     }
 }

@@ -7,29 +7,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="450.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="View_Controller.ModifyPartController">   <children>
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.ModifyPartController">   <children>
       <Label layoutX="26.0" layoutY="38.0" prefHeight="27.0" prefWidth="113.0" text="Modify Part">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button id="cancelButton]" fx:id="modifyPartCancelButton" layoutX="370.0" layoutY="360.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" prefWidth="70.0" text="Cancel">
+      <Button id="cancelButton]" fx:id="modifyPartCancelButton" layoutX="370.0" layoutY="360.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" onAction="#addPartCancelButtonPushed" prefWidth="70.0" text="Cancel">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <RadioButton fx:id="inHouseRB" layoutX="169.0" layoutY="41.0" mnemonicParsing="false" text="In-House">
+      <RadioButton fx:id="inHouseRB" layoutX="169.0" layoutY="41.0" mnemonicParsing="false" onAction="#InHouseRBPushed" text="In-House">
          <font>
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <Button id="saveButton" fx:id="modifyPartSaveButton" layoutX="280.0" layoutY="360.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" prefWidth="70.0" text="Save">
+      <Button id="saveButton" fx:id="modifyPartSaveButton" layoutX="280.0" layoutY="360.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" onAction="#addPartSaveButtonPushed" prefWidth="70.0" text="Save">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <RadioButton fx:id="outsourcedRB" layoutX="266.0" layoutY="41.0" mnemonicParsing="false" text="Outsourced">
+      <RadioButton fx:id="outsourcedRB" layoutX="266.0" layoutY="41.0" mnemonicParsing="false" onAction="#OutsourcedRBPushed" text="Outsourced">
          <font>
             <Font size="14.0" />
          </font>

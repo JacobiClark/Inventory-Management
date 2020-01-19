@@ -26,7 +26,25 @@ public class Inventory {
         allProducts.add(product);
     }
 
-    public void lookupPart(int partID) {
-        //TODO
+    public void lookupPart(int id) {
+        allParts.get(id);
     }
+    
+    public void lookupProduct(int productID) {
+        allProducts.get(productID);
+    }
+
+    public void deletePart(Part part) {
+        allParts.remove(part);
+    }
+
+    public void deleteProduct(Product product) {
+        allProducts.remove(product);
+    }
+
+    public void updatePart(Part part) {
+        allParts.set(part.getId(), part);
+    }
+
+
 }

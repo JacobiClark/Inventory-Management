@@ -12,16 +12,11 @@ package Model;
  */
 public class OutsourcedPart extends Part {
     
-    public OutsourcedPart(int id, String name, double price, int stock, int min, int max) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.stock = stock;
-        this.min = min;
-        this.max = max;
+    public String CompanyName;
+    
+    public OutsourcedPart() {
+        this.CompanyName = CompanyName;
     }
-        
-    private String CompanyName;
     
     public void setCompanyName(String CompanyName) {
         this.CompanyName = CompanyName;

@@ -5,13 +5,20 @@
  */
 package View_Controller;
 
+import Model.Inventory;
+import Model.Part;
+import static Model.Product.associatedParts;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -20,14 +27,34 @@ import javafx.scene.control.TextField;
  */
 public class ModifyProductController implements Initializable {
 
+   @FXML
+    private TableView<Part> unassociatedPartsTable;
     @FXML
-    private TableView<?> modifyProductTable;
+    private TableColumn<Part, Integer> unassociatedPartIDColumn;
     @FXML
-    private TextField productSearch;
+    private TableColumn<Part, String> unassociatedPartNameColumn;
     @FXML
-    private Button productSearchButton;
+    private TableColumn<Part, Integer> unassociatedPartStockColumn;
     @FXML
-    private Button addProductButton;
+    private TableColumn<Part, Double> unassociatedPartCostColumn;
+    
+    //Products Table
+    @FXML
+    private TableView<Part> associatedPartsTable;
+    @FXML
+    private TableColumn<Part, Integer> associatedPartIDColumn;
+    @FXML
+    private TableColumn<Part, String> associatedParttNameColumn;
+    @FXML
+    private TableColumn<Part, Integer> associatedPartStockColumn;
+    @FXML
+    private TableColumn<Part, Double> associatedPartCostColumn;
+    
+    //Search buttons/boxes
+    @FXML    
+    private TextField unassociatedPartsSearch;
+    @FXML
+    private Button unassociatedPartsSearchButton;
     @FXML
     private TextField Name;
     @FXML
@@ -39,20 +66,57 @@ public class ModifyProductController implements Initializable {
     @FXML
     private TextField Inv;
     @FXML
-    private TableView<?> deleteProductTable;
-    @FXML
-    private Button deleteProductButton;
+    private Button deleteAssociatedPartButton;
     @FXML
     private Button saveProductButton;
+    private Button addUnassociatedPartButton;
+    
     @FXML
-    private Button cancelProductButton;
+    private Button addAssociatedPartButton;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        //Initialize unassociated parts table columns
+    unassociatedPartIDColumn.setCellValueFactory(new PropertyValueFactory<Part, Integer>("id"));
+    unassociatedPartNameColumn.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
+    unassociatedPartStockColumn.setCellValueFactory(new PropertyValueFactory<Part, Integer>("stock"));
+    unassociatedPartCostColumn.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
+    //Load in Parts
+    unassociatedPartsTable.setItems(Inventory.allParts);
+    
+    //Initialize associated parts table columns
+    associatedPartIDColumn.setCellValueFactory(new PropertyValueFactory<Part, Integer>("id"));
+    associatedParttNameColumn.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
+    associatedPartStockColumn.setCellValueFactory(new PropertyValueFactory<Part, Integer>("stock"));
+    associatedPartCostColumn.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
+    //Load in Products
+    associatedPartsTable.setItems(associatedParts);
+    
+    //Filter the Parts
+    FilteredList<Part> filteredData = new FilteredList<>(Inventory.allParts, p -> true);
+
+    unassociatedPartsSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(Part -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (Part.getName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                }
+                return false; // Does not match.
+            });
+        });
+    SortedList<Part> sortedData = new SortedList<>(filteredData);
+    sortedData.comparatorProperty().bind(unassociatedPartsTable.comparatorProperty());
+    unassociatedPartsTable.setItems(sortedData);
     }    
     
 }

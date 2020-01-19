@@ -33,7 +33,13 @@ import javafx.stage.Stage;
  * @author Jacobi
  */
 public class MainController implements Initializable {
-
+    
+    public static int selectedPartID;
+    public static String selectedPartName;
+    public static int selectedPartStock;
+    public static double selectedPartPrice;
+    public static int selectedPartMax;
+    public static int selectedPartMin;
     //Parts Table
     @FXML
     private TableView<Part> partsTable;
@@ -64,7 +70,7 @@ public class MainController implements Initializable {
     @FXML
     private Button partsSearchButton;
     @FXML
-    private TextField productsSearch;
+    public TextField productsSearch;
     @FXML    
     private Button partAdd;
     @FXML
@@ -81,6 +87,19 @@ public class MainController implements Initializable {
     private Button partModify;
     @FXML
     public void partModifyButtonPushed(ActionEvent event) throws IOException {
+        Part selectedPart = partsTable.getSelectionModel().getSelectedItem();
+        int id = selectedPart.getId();
+        String name = selectedPart.getName();
+        int stock = selectedPart.getStock();
+        double price = selectedPart.getPrice();
+        int max = selectedPart.getMax();
+        int min = selectedPart.getMin();
+        this.selectedPartID = id;
+        this.selectedPartName = name;
+        this.selectedPartStock = stock;
+        this.selectedPartPrice = price;
+        this.selectedPartMax = max;
+        this.selectedPartMin = min;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ModifyPart.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
@@ -103,6 +122,7 @@ public class MainController implements Initializable {
         stage.setScene(new Scene(root));  
         stage.show();
     }
+
     
     @FXML
     private Button productModify;
@@ -111,7 +131,7 @@ public class MainController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ModifyProduct.fxml"));
         Parent root = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Add New Product");
+        stage.setTitle("Modify Product");
         stage.setScene(new Scene(root));  
         stage.show();
     }
@@ -137,12 +157,21 @@ public class MainController implements Initializable {
     PartCostColumn.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
     //Load in Parts
     partsTable.setItems(Inventory.allParts);
+
+    //Initialize product table columns
+    ProductIDColumn.setCellValueFactory(new PropertyValueFactory<Product, Integer>("id"));
+    ProductNameColumn.setCellValueFactory(new PropertyValueFactory<Product, String>("name"));
+    ProductStockColumn.setCellValueFactory(new PropertyValueFactory<Product, Integer>("stock"));
+    ProductCostColumn.setCellValueFactory(new PropertyValueFactory<Product, Double>("price"));
+    //Load in Parts
+    productsTable.setItems(Inventory.allProducts);
     
     //Filter the Parts
-    FilteredList<Part> filteredData = new FilteredList<>(Inventory.allParts, p -> true);
+    FilteredList<Part> filteredParts = new FilteredList<>(Inventory.allParts, p -> true);
+    FilteredList<Product> filteredProducts = new FilteredList<>(Inventory.allProducts, p -> true);
 
     partsSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(Part -> {
+            filteredParts.setPredicate(Part -> {
                 // If filter text is empty, display all persons.
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
@@ -157,8 +186,29 @@ public class MainController implements Initializable {
                 return false; // Does not match.
             });
         });
-    SortedList<Part> sortedData = new SortedList<>(filteredData);
-    sortedData.comparatorProperty().bind(partsTable.comparatorProperty());
-    partsTable.setItems(sortedData);
+    SortedList<Part> sortedDataPart = new SortedList<>(filteredParts);
+    sortedDataPart.comparatorProperty().bind(partsTable.comparatorProperty());
+    partsTable.setItems(sortedDataPart);
+    
+    //filter the products
+    productsSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredProducts.setPredicate(Product -> {
+                // If filter text is empty, display all persons.
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                
+                // Compare first name and last name of every person with filter text.
+                String lowerCaseFilter = newValue.toLowerCase();
+                
+                if (Product.getName().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                }
+                return false; // Does not match.
+            });
+        });
+    SortedList<Product> sortedDataProduct = new SortedList<>(filteredProducts);
+    sortedDataProduct.comparatorProperty().bind(productsTable.comparatorProperty());
+    productsTable.setItems(sortedDataProduct);
     }
 }
