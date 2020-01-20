@@ -23,7 +23,7 @@
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <Button id="saveButton" fx:id="modifyPartSaveButton" layoutX="280.0" layoutY="360.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" onAction="#addPartSaveButtonPushed" prefWidth="70.0" text="Save">
+      <Button id="saveButton" fx:id="modifyPartSaveButton" layoutX="280.0" layoutY="360.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" prefWidth="70.0" text="Save">
          <font>
             <Font size="14.0" />
          </font>

@@ -17,13 +17,17 @@ public class Inventory {
     
     public static ObservableList<Part> allParts = FXCollections.observableArrayList();
     public static ObservableList<Product> allProducts = FXCollections.observableArrayList();
+    public int partID;
+    public Integer productID;
 
     public void addPart(Part part) {
         allParts.add(part);
+        this.partID++;
     }
 
     public void addProduct(Product product) {
         allProducts.add(product);
+        this.productID++;
     }
 
     public void lookupPart(int id) {
@@ -44,6 +48,10 @@ public class Inventory {
 
     public void updatePart(Part part) {
         allParts.set(part.getId(), part);
+    }
+    
+    public int getPartID(int partID) {
+        return this.partID;
     }
 
 

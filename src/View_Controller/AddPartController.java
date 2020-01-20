@@ -52,7 +52,7 @@ public class AddPartController implements Initializable {
     @FXML
     private RadioButton PartOutsourcedRB;
     @FXML
-    public static int idCounter = 1;
+    public static int partID = 1;
     
     public void InHouseRBPushed(ActionEvent event) {
         this.PartInHouseRB.setSelected(true);
@@ -76,13 +76,13 @@ public class AddPartController implements Initializable {
         Inventory inventory = new Inventory();
         if (SourceDependantLabel.getText().equals("Machine ID")) {
             InHousePart newIhPart = new InHousePart();
+            newIhPart.setId(partID++);
             newIhPart.setName(PartName.getText());
             newIhPart.setPrice(Double.parseDouble(PartCost.getText()));
             newIhPart.setStock(Integer.parseInt(PartStock.getText()));
             newIhPart.setMin(Integer.parseInt(PartMin.getText()));
             newIhPart.setMax(Integer.parseInt(PartMax.getText()));
             newIhPart.setMachineID(Integer.parseInt(SourceDependantTextField.getText()));
-            newIhPart.setId(idCounter++);
             inventory.addPart(newIhPart);
         }
         else {
@@ -93,7 +93,7 @@ public class AddPartController implements Initializable {
             newOSPart.setMin(Integer.parseInt(PartMin.getText()));
             newOSPart.setMax(Integer.parseInt(PartMax.getText()));
             newOSPart.setCompanyName(SourceDependantTextField.getText());
-            newOSPart.setId(idCounter++);
+            newOSPart.setId(partID++);
             inventory.addPart(newOSPart);
         }
         ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();

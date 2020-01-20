@@ -86,21 +86,10 @@ public class MainController implements Initializable {
     @FXML
     private Button partModify;
     @FXML
-    public void partModifyButtonPushed(ActionEvent event) throws IOException {
-        Part selectedPart = partsTable.getSelectionModel().getSelectedItem();
-        int id = selectedPart.getId();
-        String name = selectedPart.getName();
-        int stock = selectedPart.getStock();
-        double price = selectedPart.getPrice();
-        int max = selectedPart.getMax();
-        int min = selectedPart.getMin();
-        this.selectedPartID = id;
-        this.selectedPartName = name;
-        this.selectedPartStock = stock;
-        this.selectedPartPrice = price;
-        this.selectedPartMax = max;
-        this.selectedPartMin = min;
+    public void partModifyButtonPushed(ActionEvent event) throws IOException {        
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ModifyPart.fxml"));
+        ModifyPartController controller = fxmlLoader.load();
+        controller.loadSelectedPart(partsTable.getSelectionModel().getSelectedItem());
         Parent root = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setTitle("Modify Part");
