@@ -17,6 +17,15 @@ public abstract class Part {
     int stock;
     int min;
     int max;
+    
+    public Part() {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+        this.min = min;
+        this.max = max;
+    }
 
     public int getId() {
         return id;

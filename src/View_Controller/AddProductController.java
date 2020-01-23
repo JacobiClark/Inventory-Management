@@ -74,6 +74,7 @@ public class AddProductController implements Initializable {
     private Button deleteAssociatedPartButton;
     @FXML
     private Button saveProductButton;
+    @FXML
     private Button addUnassociatedPartButton;
     @FXML
     private Button addAssociatedPartButton;

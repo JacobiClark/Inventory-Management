@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
 /**
@@ -30,9 +31,9 @@ public class ModifyPartController implements Initializable {
     @FXML
     private RadioButton PartInHouseRB;
     @FXML
-    private Button addPartCancelButton;
+    private Button modifyPartCancelButton;
     @FXML
-    private Button addPartSaveButton;
+    private Button modifyPartSaveButton;
     @FXML
     private TextField PartID;
     @FXML
@@ -40,9 +41,9 @@ public class ModifyPartController implements Initializable {
     @FXML
     private TextField PartMax;
     @FXML
-    private TextField PartCost;
-    @FXML
     private TextField PartMin;
+    @FXML
+    private TextField PartCost;
     @FXML
     private TextField SourceDependantTextField;
     @FXML
@@ -53,40 +54,49 @@ public class ModifyPartController implements Initializable {
     private RadioButton PartOutsourcedRB;
     @FXML
     public static int idCounter = 1;
+    @FXML
     private Part selectedPart;
+    @FXML
+    private ToggleGroup sourceRadioButtons;
+    @FXML
+    private int partID = 1;
 
     
-    public void InHouseRBPushed(ActionEvent event) {
-        this.PartInHouseRB.setSelected(true);
-        this.PartOutsourcedRB.setSelected(false);
-        this.SourceDependantLabel.setText("Machine Id");
+    public void InHouseRBPushed() {
+        this.SourceDependantLabel.setText("Machine ID");
         this.SourceDependantTextField.setPromptText("Machine ID #");
     }
 
-    public void OutsourcedRBPushed(ActionEvent event) {
-        this.PartInHouseRB.setSelected(false);
-        this.PartOutsourcedRB.setSelected(true);
+    public void OutsourcedRBPushed() {
         this.SourceDependantLabel.setText("Company Name");
         this.SourceDependantTextField.setPromptText("Company Name");
     }
     
-    public void loadSelectedPart(Part part)
-    {
-        selectedPart = part; 
-        PartID.setText(String.valueOf(selectedPart.getId()));
-        PartName.setText(selectedPart.getName());
-        PartCost.setText(String.valueOf(selectedPart.getPrice()));
-        PartMin.setText(String.valueOf(selectedPart.getMin()));
-        PartMax.setText(String.valueOf(selectedPart.getMax()));
-
-    }
-
-    public void addPartCancelButtonPushed (ActionEvent event) {
+    public void modifyPartCancelButtonPushed (ActionEvent event) {
         ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
     }
-
-    /*public void addPartSaveButtonPushed (ActionEvent event) throws IOException {
-        Inventory inventory = new Inventory();
+    
+    public void setPart(Part part) {
+        selectedPart = part;
+        PartID.setText(new String(String.valueOf(selectedPart.getId())));
+        PartName.setText(new String (selectedPart.getName()));
+        PartStock.setText((new String(String.valueOf(selectedPart.getStock()))));
+        PartCost.setText(new String(String.valueOf(selectedPart.getPrice())));
+        PartMin.setText(new String(String.valueOf(selectedPart.getMin())));
+        PartMax.setText(new String(String.valueOf(selectedPart.getMax())));
+        if (selectedPart instanceof InHousePart) {
+            InHouseRBPushed();
+            this.SourceDependantTextField.setText(Integer.toString(((InHousePart)(part)).getMachineID()));
+            PartInHouseRB.setSelected(true);
+        }
+        else if (selectedPart instanceof OutsourcedPart) {
+            PartInHouseRB.setSelected(true);
+            OutsourcedRBPushed();
+            this.SourceDependantTextField.setText(((OutsourcedPart)(part)).getCompanyName());
+        }
+     }
+    
+    public void modifyPartSaveButtonPushed (ActionEvent event) throws IOException {
         if (SourceDependantLabel.getText().equals("Machine ID")) {
             InHousePart newIhPart = new InHousePart();
             newIhPart.setName(PartName.getText());
@@ -95,8 +105,8 @@ public class ModifyPartController implements Initializable {
             newIhPart.setMin(Integer.parseInt(PartMin.getText()));
             newIhPart.setMax(Integer.parseInt(PartMax.getText()));
             newIhPart.setMachineID(Integer.parseInt(SourceDependantTextField.getText()));
-            newIhPart.setId(idCounter++);
-            inventory.addPart(newIhPart);
+            newIhPart.setId(Inventory.getPartID());
+            Inventory.updatePart(newIhPart);
         }
         else {
             OutsourcedPart newOSPart = new OutsourcedPart();
@@ -106,20 +116,22 @@ public class ModifyPartController implements Initializable {
             newOSPart.setMin(Integer.parseInt(PartMin.getText()));
             newOSPart.setMax(Integer.parseInt(PartMax.getText()));
             newOSPart.setCompanyName(SourceDependantTextField.getText());
-            newOSPart.setId(idCounter++);
-            inventory.addPart(newOSPart);
+            newOSPart.setId(Inventory.getPartID());
+            Inventory.updatePart(newOSPart);
         }
         ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
 
-    }*/
+    }
 
-    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-    }  
+        sourceRadioButtons = new ToggleGroup();
+        this.PartInHouseRB.setToggleGroup(sourceRadioButtons);
+        this.PartOutsourcedRB.setToggleGroup(sourceRadioButtons);
+    }
+    
     
 }

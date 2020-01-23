@@ -15,7 +15,8 @@ public class OutsourcedPart extends Part {
     public String CompanyName;
     
     public OutsourcedPart() {
-        this.CompanyName = CompanyName;
+        super();
+        String CompanyName;
     }
     
     public void setCompanyName(String CompanyName) {

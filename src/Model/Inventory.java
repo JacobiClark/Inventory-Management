@@ -17,41 +17,56 @@ public class Inventory {
     
     public static ObservableList<Part> allParts = FXCollections.observableArrayList();
     public static ObservableList<Product> allProducts = FXCollections.observableArrayList();
-    public int partID;
-    public Integer productID;
+    public static int partID = 1;
+    public static Integer productID = 1;
+    
+    public Inventory() {
+        
+    }
 
-    public void addPart(Part part) {
+    public static void addPart(Part part) {
         allParts.add(part);
-        this.partID++;
+        partID++;
     }
 
-    public void addProduct(Product product) {
+    public static void addProduct(Product product) {
         allProducts.add(product);
-        this.productID++;
+        productID++;
     }
 
-    public void lookupPart(int id) {
+    public static void lookupPart(int id) {
         allParts.get(id);
     }
     
-    public void lookupProduct(int productID) {
+    public static  void lookupProduct(int productID) {
         allProducts.get(productID);
     }
 
-    public void deletePart(Part part) {
+    public static void deletePart(Part part) {
         allParts.remove(part);
     }
 
-    public void deleteProduct(Product product) {
+    public static void deleteProduct(Product product) {
         allProducts.remove(product);
     }
 
-    public void updatePart(Part part) {
-        allParts.set(part.getId(), part);
+    public static void updatePart(Part part) {
+        allParts.set(part.getId() -2, part);
+    }
+    public static void printPartID(Part part) {
+        System.out.print(part.getId());
     }
     
-    public int getPartID(int partID) {
-        return this.partID;
+    public static int getPartID() {
+        return partID;
+    }
+    
+    public static ObservableList<Part> getAllParts() {
+        return allParts;
+    }
+    
+    public static ObservableList<Product> getAllProducts() {
+        return allProducts;
     }
 
 

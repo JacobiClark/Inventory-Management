@@ -13,27 +13,27 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button id="cancelButton]" fx:id="modifyPartCancelButton" layoutX="370.0" layoutY="360.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" onAction="#addPartCancelButtonPushed" prefWidth="70.0" text="Cancel">
+      <Button id="cancelButton]" fx:id="modifyPartCancelButton" layoutX="370.0" layoutY="360.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" onAction="#modifyPartCancelButtonPushed" prefWidth="70.0" text="Cancel">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <RadioButton fx:id="inHouseRB" layoutX="169.0" layoutY="41.0" mnemonicParsing="false" onAction="#InHouseRBPushed" text="In-House">
+      <RadioButton fx:id="PartInHouseRB" layoutX="169.0" layoutY="41.0" mnemonicParsing="false" onAction="#InHouseRBPushed" text="In-House">
          <font>
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <Button id="saveButton" fx:id="modifyPartSaveButton" layoutX="280.0" layoutY="360.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" prefWidth="70.0" text="Save">
+      <Button id="saveButton" fx:id="modifyPartSaveButton" layoutX="280.0" layoutY="360.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" onAction="#modifyPartSaveButtonPushed" prefWidth="70.0" text="Save">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <RadioButton fx:id="outsourcedRB" layoutX="266.0" layoutY="41.0" mnemonicParsing="false" onAction="#OutsourcedRBPushed" text="Outsourced">
+      <RadioButton fx:id="PartOutsourcedRB" layoutX="266.0" layoutY="41.0" mnemonicParsing="false" onAction="#OutsourcedRBPushed" text="Outsourced">
          <font>
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <TextField fx:id="ID" layoutX="140.0" layoutY="110.0" maxWidth="160.0" prefHeight="30.0" prefWidth="160.0" promptText="ID">
+      <TextField fx:id="PartID" layoutX="140.0" layoutY="110.0" maxWidth="160.0" prefHeight="30.0" prefWidth="160.0" promptText="ID">
          <font>
             <Font size="14.0" />
          </font>
@@ -43,7 +43,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="Name" layoutX="140.0" layoutY="150.0" maxWidth="160.0" prefHeight="30.0" prefWidth="160.0" promptText="Part Name">
+      <TextField fx:id="PartName" layoutX="140.0" layoutY="150.0" maxWidth="160.0" prefHeight="30.0" prefWidth="160.0" promptText="Part Name">
          <font>
             <Font size="14.0" />
          </font>
@@ -53,12 +53,12 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="Max" layoutX="140.0" layoutY="270.0" maxWidth="160.0" prefHeight="30.0" prefWidth="70.0" promptText="Max">
+      <TextField fx:id="PartMax" layoutX="140.0" layoutY="270.0" maxWidth="160.0" prefHeight="30.0" prefWidth="70.0" promptText="Max">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <TextField fx:id="priceCost" layoutX="140.0" layoutY="230.0" maxWidth="160.0" prefHeight="30.0" prefWidth="160.0" promptText="Price/Cost">
+      <TextField fx:id="PartCost" layoutX="140.0" layoutY="230.0" maxWidth="160.0" prefHeight="30.0" prefWidth="160.0" promptText="Price/Cost">
          <font>
             <Font size="14.0" />
          </font>
@@ -73,7 +73,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="Min" layoutX="300.0" layoutY="270.0" maxWidth="160.0" prefHeight="30.0" prefWidth="70.0" promptText="Min">
+      <TextField fx:id="PartMin" layoutX="300.0" layoutY="270.0" maxWidth="160.0" prefHeight="30.0" prefWidth="70.0" promptText="Min">
          <font>
             <Font size="14.0" />
          </font>
@@ -83,12 +83,12 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="companyName" layoutX="140.0" layoutY="310.0" maxWidth="160.0" prefHeight="30.0" prefWidth="160.0" promptText="Company Name">
+      <TextField fx:id="SourceDependantTextField" layoutX="140.0" layoutY="310.0" maxWidth="160.0" prefHeight="30.0" prefWidth="160.0" promptText="Company Name">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Label layoutX="30.0" layoutY="315.0" prefHeight="20.0" prefWidth="104.0" text="Company Name">
+      <Label fx:id="SourceDependantLabel" layoutX="30.0" layoutY="315.0" prefHeight="20.0" prefWidth="104.0" text="Company Name">
          <font>
             <Font size="14.0" />
          </font>
@@ -98,7 +98,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="Inv" layoutX="140.0" layoutY="190.0" maxWidth="160.0" prefHeight="30.0" prefWidth="160.0" promptText="Inv">
+      <TextField fx:id="PartStock" layoutX="140.0" layoutY="190.0" maxWidth="160.0" prefHeight="30.0" prefWidth="160.0" promptText="Inv">
          <font>
             <Font size="14.0" />
          </font>

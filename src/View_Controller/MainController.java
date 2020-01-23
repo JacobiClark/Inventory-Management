@@ -5,12 +5,15 @@
  */
 package View_Controller;
 
+import Model.InHousePart;
 import Model.Inventory;
+import Model.OutsourcedPart;
 import Model.Part;
 import Model.Product;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -33,13 +36,20 @@ import javafx.stage.Stage;
  * @author Jacobi
  */
 public class MainController implements Initializable {
-    
+    @FXML
     public static int selectedPartID;
+    @FXML
     public static String selectedPartName;
+    @FXML
     public static int selectedPartStock;
+    @FXML
     public static double selectedPartPrice;
+    @FXML
     public static int selectedPartMax;
+    @FXML
     public static int selectedPartMin;
+    @FXML
+    public static int modifyPartIndex;
     //Parts Table
     @FXML
     private TableView<Part> partsTable;
@@ -86,15 +96,18 @@ public class MainController implements Initializable {
     @FXML
     private Button partModify;
     @FXML
-    public void partModifyButtonPushed(ActionEvent event) throws IOException {        
+    public void partModifyButtonPushed(ActionEvent event) throws IOException {
+        this.modifyPartIndex = partsTable.getSelectionModel().getSelectedIndex();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ModifyPart.fxml"));
-        ModifyPartController controller = fxmlLoader.load();
-        controller.loadSelectedPart(partsTable.getSelectionModel().getSelectedItem());
         Parent root = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Modify Part");
+        stage.setTitle("Modify Parts");
         stage.setScene(new Scene(root));  
         stage.show();
+        ModifyPartController controller = fxmlLoader.getController();
+        Part selectedPart = partsTable.getSelectionModel().getSelectedItem();
+        controller.setPart(selectedPart);       
+        
     }
     @FXML
     private Button partDelete;
@@ -138,7 +151,23 @@ public class MainController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        //create test IH and OS parts
+        InHousePart sampleIH = new InHousePart();
+        sampleIH.setId(Inventory.getPartID());
+        sampleIH.setName("IH");
+        sampleIH.setStock(55);
+        sampleIH.setMax(99);
+        sampleIH.setMin(2);
+        sampleIH.setMachineID(22);
+        Inventory.addPart(sampleIH);
+        OutsourcedPart sampleOS = new OutsourcedPart();
+        sampleOS.setId(Inventory.getPartID());
+        sampleOS.setName("IH");
+        sampleOS.setStock(55);
+        sampleOS.setMax(99);
+        sampleOS.setMin(2);
+        sampleOS.setCompanyName("bruh");
+        Inventory.addPart(sampleOS);
     //Initialize part table columns
     PartIDColumn.setCellValueFactory(new PropertyValueFactory<Part, Integer>("id"));
     PartNameColumn.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
@@ -146,6 +175,7 @@ public class MainController implements Initializable {
     PartCostColumn.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
     //Load in Parts
     partsTable.setItems(Inventory.allParts);
+    
 
     //Initialize product table columns
     ProductIDColumn.setCellValueFactory(new PropertyValueFactory<Product, Integer>("id"));

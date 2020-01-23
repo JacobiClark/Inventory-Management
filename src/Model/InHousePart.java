@@ -15,7 +15,8 @@ public class InHousePart extends Part {
     private int machineID;
     
     public InHousePart() {
-        this.machineID = machineID;
+        super();
+        int machineID;
     }
     
     
