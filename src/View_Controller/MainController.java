@@ -96,7 +96,7 @@ public class MainController implements Initializable {
     @FXML
     private Button partModify;
     @FXML
-    public void partModifyButtonPushed(ActionEvent event) throws IOException {
+    public void partModifyButtonPushed(ActionEvent event) throws IOException {/*
         this.modifyPartIndex = partsTable.getSelectionModel().getSelectedIndex();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ModifyPart.fxml"));
         Parent root = (Parent) fxmlLoader.load();
@@ -106,7 +106,7 @@ public class MainController implements Initializable {
         stage.show();
         ModifyPartController controller = fxmlLoader.getController();
         Part selectedPart = partsTable.getSelectionModel().getSelectedItem();
-        controller.setPart(selectedPart);       
+        controller.setPart(selectedPart);   */    
         
     }
     @FXML
@@ -125,6 +125,11 @@ public class MainController implements Initializable {
         stage.show();
     }
 
+    public void partDeleteButtonPushed() throws IOException {
+        Part selectedPart = partsTable.getSelectionModel().getSelectedItem();
+        Inventory.deletePart(selectedPart);
+
+    }
     
     @FXML
     private Button productModify;
@@ -136,6 +141,10 @@ public class MainController implements Initializable {
         stage.setTitle("Modify Product");
         stage.setScene(new Scene(root));  
         stage.show();
+        ModifyProductController controller = fxmlLoader.getController();
+        Product selectedProduct = productsTable.getSelectionModel().getSelectedItem();
+        controller.setProduct(selectedProduct);       
+        
     }
     
     @FXML

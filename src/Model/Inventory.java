@@ -18,7 +18,7 @@ public class Inventory {
     public static ObservableList<Part> allParts = FXCollections.observableArrayList();
     public static ObservableList<Product> allProducts = FXCollections.observableArrayList();
     public static int partID = 1;
-    public static Integer productID = 1;
+    public static int productID = 1;
     
     public Inventory() {
         
@@ -51,7 +51,7 @@ public class Inventory {
     }
 
     public static void updatePart(Part part) {
-        allParts.set(part.getId() -2, part);
+        allParts.set(part.getId() -1, part);
     }
     public static void printPartID(Part part) {
         System.out.print(part.getId());
@@ -59,6 +59,10 @@ public class Inventory {
     
     public static int getPartID() {
         return partID;
+    }
+    
+    public static int getProductID() {
+        return productID;
     }
     
     public static ObservableList<Part> getAllParts() {

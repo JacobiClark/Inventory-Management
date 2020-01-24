@@ -105,7 +105,7 @@ public class ModifyPartController implements Initializable {
             newIhPart.setMin(Integer.parseInt(PartMin.getText()));
             newIhPart.setMax(Integer.parseInt(PartMax.getText()));
             newIhPart.setMachineID(Integer.parseInt(SourceDependantTextField.getText()));
-            newIhPart.setId(Inventory.getPartID());
+            newIhPart.setId(Integer.parseInt(PartID.getText()));
             Inventory.updatePart(newIhPart);
         }
         else {
@@ -116,7 +116,7 @@ public class ModifyPartController implements Initializable {
             newOSPart.setMin(Integer.parseInt(PartMin.getText()));
             newOSPart.setMax(Integer.parseInt(PartMax.getText()));
             newOSPart.setCompanyName(SourceDependantTextField.getText());
-            newOSPart.setId(Inventory.getPartID());
+            newOSPart.setId(Integer.parseInt(PartID.getText()));
             Inventory.updatePart(newOSPart);
         }
         ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();

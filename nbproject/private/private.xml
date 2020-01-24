@@ -5,11 +5,13 @@
         <group>
             <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/View_Controller/ModifyPartController.java</file>
             <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/Model/InHousePart.java</file>
+            <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/View_Controller/ModifyProductController.java</file>
             <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/Model/Inventory.java</file>
             <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/Model/Part.java</file>
             <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/View_Controller/MainController.java</file>
+            <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/View_Controller/AddProductController.java</file>
             <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/View_Controller/AddPartController.java</file>
-            <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/View_Controller/ModifyPart.fxml</file>
+            <file>file:/Users/apple/Programming-Files/WGU/c482/Inventory-Management/src/Model/Product.java</file>
         </group>
     </open-files>
 </project-private>

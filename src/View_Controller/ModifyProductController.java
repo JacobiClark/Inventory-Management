@@ -5,9 +5,13 @@
  */
 package View_Controller;
 
+
 import Model.Inventory;
 import Model.Part;
+import Model.Product;
 import static Model.Product.associatedParts;
+import java.awt.event.ActionEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.transformation.FilteredList;
@@ -19,6 +23,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -58,6 +63,8 @@ public class ModifyProductController implements Initializable {
     @FXML
     private TextField Name;
     @FXML
+    private TextField ID;
+    @FXML
     private TextField Max;
     @FXML
     private TextField PriceCost;
@@ -73,6 +80,46 @@ public class ModifyProductController implements Initializable {
     
     @FXML
     private Button addAssociatedPartButton;
+    
+    public void setProduct(Product product) {
+        Product selectedProduct = product;
+        ID.setText(new String(String.valueOf(selectedProduct.getID())));
+        Name.setText(new String (selectedProduct.getName()));
+        Inv.setText((new String(String.valueOf(selectedProduct.getStock()))));
+        PriceCost.setText(new String(String.valueOf(selectedProduct.getPrice())));
+        Min.setText(new String(String.valueOf(selectedProduct.getMin())));
+        Max.setText(new String(String.valueOf(selectedProduct.getMax())));
+     }
+    
+    public void modifyProductCancelButtonPushed (ActionEvent event) {
+        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+    }
+
+    public void modifyProductSaveButtonPushed (ActionEvent event) throws IOException {
+        Product newProduct = new Product();
+        newProduct.setID(Inventory.getProductID());
+        newProduct.setName(Name.getText());
+        newProduct.setPrice(Double.parseDouble(PriceCost.getText()));
+        newProduct.setStock(Integer.parseInt(Inv.getText()));
+        newProduct.setMin(Integer.parseInt(Min.getText()));
+        newProduct.setMax(Integer.parseInt(Max.getText()));
+        newProduct.getAllAssociatedParts(associatedParts);
+        Inventory.addProduct(newProduct);
+        ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
+        /*if (SourceDependantLabel.getText().equals("Machine ID")) {
+                InHousePart newIhPart = new InHousePart();
+                newIhPart.setName(PartName.getText());
+                newIhPart.setPrice(Double.parseDouble(PartCost.getText()));
+                newIhPart.setStock(Integer.parseInt(PartStock.getText()));
+                newIhPart.setMin(Integer.parseInt(PartMin.getText()));
+                newIhPart.setMax(Integer.parseInt(PartMax.getText()));
+                newIhPart.setMachineID(Integer.parseInt(SourceDependantTextField.getText()));
+                newIhPart.setId(Integer.parseInt(PartID.getText()));
+                Inventory.updatePart(newIhPart);
+            }import Model.Inventory;*/
+
+    }
+
 
     /**
      * Initializes the controller class.

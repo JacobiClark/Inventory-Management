@@ -22,7 +22,7 @@ public class Product {
     private int min;
     private int max;
     
-    public Product (int id, String name, double price, int stock, int min, int max){
+    public Product (){
         this.id = id;
         this.name = name;
         this.price = price;
@@ -45,11 +45,11 @@ public class Product {
         this.associatedParts = associatedParts;
     }
     
-    public void setID(int id){
+    public void setID(int id) {
         this.id = id;
     }
     
-    public void setName(String Name){
+    public void setName(String name){
         this.name = name;
     }
     

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.AddProductController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.AddProductController">
    <children>
       <Label layoutX="40.0" layoutY="26.0" text="Modify Product">
          <font>
@@ -38,7 +38,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <TextField layoutX="150.0" layoutY="120.0" maxWidth="160.0" prefHeight="30.0" prefWidth="160.0" promptText="Auto Gen - Disabled">
+      <TextField fx:id="ID" layoutX="150.0" layoutY="120.0" maxWidth="160.0" prefHeight="30.0" prefWidth="160.0" promptText="Auto Gen - Disabled">
          <font>
             <Font size="14.0" />
          </font>

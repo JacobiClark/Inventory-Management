@@ -85,12 +85,27 @@ public class AddProductController implements Initializable {
         associatedPartsTable.setItems(associatedParts);    
     }
     public void addProductSaveButtonPushed (ActionEvent event) throws IOException {
-        Inventory newInventory = new Inventory();
-        Product newProduct = new Product(ProductCounter++, Name.getText(), Double.parseDouble(PriceCost.getText()), Integer.parseInt(Inv.getText()),Integer.parseInt(Min.getText()), Integer.parseInt(Max.getText()));
+        Product newProduct = new Product();
+        newProduct.setID(Inventory.getProductID());
+        newProduct.setName(Name.getText());
+        newProduct.setPrice(Double.parseDouble(PriceCost.getText()));
+        newProduct.setStock(Integer.parseInt(Inv.getText()));
+        newProduct.setMin(Integer.parseInt(Min.getText()));
+        newProduct.setMax(Integer.parseInt(Max.getText()));
         newProduct.getAllAssociatedParts(associatedParts);
-        newInventory.addProduct(newProduct);
+        Inventory.addProduct(newProduct);
         ((Stage)(((Button)event.getSource()).getScene().getWindow())).close();
         System.out.print(newProduct);
+        
+        /*InHousePart newIhPart = new InHousePart();
+            newIhPart.setId(Inventory.getPartID());
+            newIhPart.setName(PartName.getText());
+            newIhPart.setPrice(Double.parseDouble(PartCost.getText()));
+            newIhPart.setStock(Integer.parseInt(PartStock.getText()));
+            newIhPart.setMin(Integer.parseInt(PartMin.getText()));
+            newIhPart.setMax(Integer.parseInt(PartMax.getText()));
+            newIhPart.setMachineID(Integer.parseInt(SourceDependantTextField.getText()));
+            Inventory.addPart(newIhPart);*/
 
     }
     
