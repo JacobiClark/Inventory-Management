@@ -106,7 +106,7 @@
             <TableColumn fx:id="associatedPartCostColumn" prefWidth="129.0" text="Price Per Unit" />
          </columns>
       </TableView>
-      <Button id="deleteProductsButton" fx:id="deleteAssociatedPartButton" layoutX="830.0" layoutY="510.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" prefWidth="70.0" text="Delete">
+      <Button id="deleteProductsButton" fx:id="deleteAssociatedPartButton" layoutX="830.0" layoutY="510.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" onAction="#deleteAssociatedPartButtonPushed" prefWidth="70.0" text="Delete">
          <font>
             <Font size="14.0" />
          </font>

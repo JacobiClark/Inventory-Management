@@ -1,9 +1,9 @@
 package Model;
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+* To change this license header, choose License Headers in Project Properties.
+* To change this template file, choose Tools | Templates
+* and open the template in the editor.
  */
 
 /**
@@ -11,20 +11,20 @@ package Model;
  * @author Jacobi
  */
 public abstract class Part {
-    int id;
+    int    id;
     String name;
     double price;
-    int stock;
-    int min;
-    int max;
-    
+    int    stock;
+    int    min;
+    int    max;
+
     public Part() {
-        this.id = id;
-        this.name = name;
+        this.id    = id;
+        this.name  = name;
         this.price = price;
         this.stock = stock;
-        this.min = min;
-        this.max = max;
+        this.min   = min;
+        this.max   = max;
     }
 
     public int getId() {
@@ -33,6 +33,22 @@ public abstract class Part {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    public void setMax(int max) {
+        this.max = max;
+    }
+
+    public int getMin() {
+        return min;
+    }
+
+    public void setMin(int min) {
+        this.min = min;
     }
 
     public String getName() {
@@ -58,22 +74,4 @@ public abstract class Part {
     public void setStock(int stock) {
         this.stock = stock;
     }
-
-    public int getMin() {
-        return min;
-    }
-
-    public void setMin(int min) {
-        this.min = min;
-    }
-
-    public int getMax() {
-        return max;
-    }
-
-    public void setMax(int max) {
-        this.max = max;
-    }
 }
-
-

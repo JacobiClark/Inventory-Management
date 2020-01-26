@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="420.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.MainController">
+<AnchorPane id="AnchorPane" prefHeight="420.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View_Controller.MainController">
     <children>
         <TableView fx:id="partsTable" layoutX="40.0" layoutY="120.0" prefHeight="200.0" prefWidth="400.0">
             <columns>
@@ -91,7 +91,7 @@
                 <Font size="14.0" />
             </font>
         </Button>
-        <Button id="deleteProductsButton" fx:id="productDelete" layoutX="830.0" layoutY="340.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" prefWidth="70.0" text="Delete">
+        <Button id="deleteProductsButton" fx:id="productDelete" layoutX="830.0" layoutY="340.0" maxWidth="70.0" minWidth="70.0" mnemonicParsing="false" onAction="#productDeleteButtonPushed" prefWidth="70.0" text="Delete">
             <font>
                 <Font size="14.0" />
             </font>
